@@ -38,7 +38,7 @@ router.delete("/:email",async (req, res)=>{
        
         const secret = process.env.secretkey;
         const token = jwt.sign({ email }, secret, { expiresIn: '1h' });
-        const activationLink = `http://localhost:3000/shorturl/activate/${token}`;
+        const activationLink = `https://url-shortner-frontend-peach.vercel.app//shorturl/activate/${token}`;
   
         
         console.log("Activation Link:", activationLink);
@@ -113,7 +113,7 @@ router.post("/forgot-password", express.json(), async (req, res) => {
       
       const secret = process.env.secretkey;
       const token = jwt.sign({ email: user.email }, secret, { expiresIn: '1h' });
-      const resetLink = `http://localhost:3000/shorturl/reset-password/${email}/${token}`;
+      const resetLink = `https://url-shortner-frontend-peach.vercel.app//shorturl/reset-password/${email}/${token}`;
       return res.json({ message: "Reset link generated successfully.Reset link generated successfully,kindly check the console and click the link which directs you to change your passwords" , resetLink});
   
     } catch (error) {
@@ -210,7 +210,7 @@ router.post("/userData", express.json(), async (req, res) => {
 //shortnening url
 router.post('/shorten', auth, express.json(), async (req, res) => {
   const { urls } = req.body;
-  const base = "http://localhost:9050";
+  const base = "https://url-shortner-373v.onrender.com";
   const results = [];
   const email = req.user.email;
 
